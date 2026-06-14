@@ -52,7 +52,7 @@ export default function MembersPage() {
     }
   }
 
-  const showQr = (groupId: number, groupName: string) => {
+  const showQr = (groupId: number) => {
     const link = `${window.location.origin}/groups/${groupId}`
     setQrModal({ show: true, link })
   }
@@ -67,7 +67,7 @@ export default function MembersPage() {
     <div className="dashboard">
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar onMenuClick={() => setMobileOpen(true)} />
+        <Topbar/>
         <div className="dashboard-content">
           <div className="members-header">
             <div>
@@ -90,7 +90,7 @@ export default function MembersPage() {
                   <span>{groupMembers.length} member{groupMembers.length > 1 ? 's' : ''}</span>
                   <button
                     className="btn-qr"
-                    onClick={() => showQr(groupMembers[0].group_id, groupName)}
+                    onClick={() => showQr(groupMembers[0].group_id)}
                   >
                     <i className="bx bx-qr"></i> Share Group
                   </button>

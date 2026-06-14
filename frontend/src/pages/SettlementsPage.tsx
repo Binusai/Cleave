@@ -66,7 +66,7 @@ export default function SettlementsPage() {
     <div className="dashboard">
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar onMenuClick={() => setMobileOpen(true)} />
+        <Topbar/>
         <div className="dashboard-content settlements-page">
 
           <div className="settlements-header">

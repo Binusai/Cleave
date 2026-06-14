@@ -112,7 +112,7 @@ export default function ExpensesPage() {
     <div className="dashboard">
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar onMenuClick={() => setMobileOpen(true)} />
+        <Topbar/>
         <div className="dashboard-content">
           <div className="expenses-header">
             <div>

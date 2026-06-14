@@ -4,7 +4,7 @@ import Sidebar from '../components/dashboard/Sidebar'
 import Topbar from '../components/dashboard/Topbar'
 import MembersList from '../components/groups/MembersList'
 import InviteModal from '../components/groups/InviteModal'
-import { fetchGroupExpenses, fetchCategories, createExpense } from '../api/expenses'
+import { fetchCategories, createExpense } from '../api/expenses'
 import AddExpenseModal from '../components/expenses/AddExpenseModal'
 import AddMemberModal from '../components/groups/AddMemberModal'
 import { fetchGroupDetail, fetchGroupBalances, deleteGroup } from '../api/groups'
@@ -63,7 +63,7 @@ export default function GroupDetailPage() {
     <div className="dashboard">
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar onMenuClick={() => setMobileOpen(true)} />
+        <Topbar/>
         <div className="dashboard-content">
           <div className="detail-header">
             <button className="back-btn" onClick={() => navigate('/groups')}>

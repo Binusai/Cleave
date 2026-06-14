@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import Sidebar from '../components/dashboard/Sidebar'
 import Topbar from '../components/dashboard/Topbar'
 import GroupCard from '../components/groups/GroupCard'
@@ -12,7 +11,6 @@ export default function GroupsPage() {
   const [showModal, setShowModal] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     loadGroups()
@@ -41,7 +39,7 @@ export default function GroupsPage() {
     <div className="dashboard">
       <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar onMenuClick={() => setMobileOpen(true)} />
+        <Topbar/>
         <div className="dashboard-content">
           <div className="groups-header">
             <div>

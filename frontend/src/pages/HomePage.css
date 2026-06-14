@@ -1,0 +1,15 @@
+.home-page {
+  display: flex;
+  justify-content: center;
+}
+
+.home-container {
+  width: 92vw;
+  margin-top: 120px;
+  background: var(--surface);
+  border-radius: 40px;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 30px rgba(22, 32, 44, 0.06);
+  overflow: hidden;
+  align-self: flex-start;
+}

@@ -1,0 +1,26 @@
+.new-category-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.new-category-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+}
+
+.new-category-row button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #1E3A8A;
+  background: #EEF2FF;
+  color: #1E3A8A;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}

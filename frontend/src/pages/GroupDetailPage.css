@@ -1,0 +1,253 @@
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: var(--hover-bg);
+}
+
+.detail-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-invite {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: var(--button-gradient);
+  color: #FFF;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.2s;
+}
+
+.btn-invite:hover {
+  opacity: 0.9;
+}
+
+.btn-delete {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--danger-border);
+  background: var(--danger-bg);
+  color: #DC2626;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.group-detail-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  padding: 28px;
+  margin-bottom: 24px;
+  transition: background 0.3s ease;
+}
+
+.group-detail-info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.group-detail-info p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.group-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.group-meta span {
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.group-meta .positive { color: #059669; }
+.group-meta .negative { color: #DC2626; }
+
+.detail-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  background: var(--hover-bg);
+  border-radius: 10px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.detail-tab {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.detail-tab.active {
+  background: var(--card-bg);
+  color: var(--text);
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.balances-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.balance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--subtle-border);
+}
+
+.balance-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.balance-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--accent-bg);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.balance-name {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.balance-email {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.balance-amount {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.balance-amount.positive { color: #059669; }
+.balance-amount.negative { color: #DC2626; }
+
+.overview-placeholder {
+  text-align: center;
+  padding: 60px;
+  color: var(--text-secondary);
+}
+
+.overview-placeholder i {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.fab-add-expense {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 16px;
+  border: none;
+  background: var(--button-gradient);
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 8px 30px var(--shadow-color);
+  transition: all 0.2s;
+  z-index: 30;
+}
+
+.fab-add-expense:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px var(--shadow-color);
+}
+
+.fab-add-expense i {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .fab-add-expense {
+    bottom: 20px;
+    right: 20px;
+    padding: 14px 20px;
+  }
+
+  .fab-add-expense span {
+    display: none;
+  }
+
+  .fab-add-expense i {
+    font-size: 24px;
+  }
+
+  .detail-tabs {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

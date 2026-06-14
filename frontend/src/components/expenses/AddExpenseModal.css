@@ -1,0 +1,11 @@
+.expense-modal { max-width: 560px; }
+.form-row { display: flex; gap: 12px; }
+.flex-1 { flex: 1; }
+.form-group select { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text); background: var(--input-bg); outline: none; cursor: pointer; }
+.form-group select:focus { border-color: var(--primary); background: var(--card-bg); }
+.participants-list { display: flex; flex-direction: column; gap: 6px; }
+.participant-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--input-bg); border-radius: 8px; border: 1px solid var(--subtle-border); }
+.participant-check { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; color: var(--text); }
+.participant-check input { width: 16px; height: 16px; accent-color: var(--primary); }
+.participant-input { width: 100px; padding: 6px 10px; border: 1.5px solid var(--border); border-radius: 6px; font-size: 13px; font-family: 'Inter', sans-serif; text-align: right; background: var(--card-bg); color: var(--text); }
+.participant-input:focus { border-color: var(--primary); outline: none; }

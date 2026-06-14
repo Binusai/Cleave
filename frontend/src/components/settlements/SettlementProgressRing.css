@@ -1,0 +1,18 @@
+.progress-ring-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0;
+}
+
+.progress-ring-fill {
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.progress-ring-text {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 800;
+  color: #16A34A;
+}

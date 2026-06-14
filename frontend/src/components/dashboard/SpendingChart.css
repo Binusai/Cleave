@@ -1,0 +1,28 @@
+.chart-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  padding: 24px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.chart-subtitle {
+  font-size: 13px;
+  color: #94A3B8;
+}
+
+.chart-container {
+  width: 100%;
+}

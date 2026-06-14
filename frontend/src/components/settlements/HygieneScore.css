@@ -1,0 +1,47 @@
+.hygiene-card {
+  text-align: center;
+}
+
+.hygiene-ring-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hygiene-ring {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.hygiene-score-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hygiene-score-number {
+  display: block;
+  font-size: 32px;
+  font-weight: 800;
+  color: #16A34A;
+  line-height: 1;
+}
+
+.hygiene-score-total {
+  font-size: 13px;
+  color: #94A3B8;
+}
+
+.hygiene-label {
+  font-weight: 700;
+  color: #16A34A;
+  margin-bottom: 4px;
+}
+
+.hygiene-sub {
+  font-size: 12px;
+  color: #64748B;
+  max-width: 200px;
+}

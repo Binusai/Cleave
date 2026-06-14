@@ -1,0 +1,209 @@
+:root {
+  --ink: #16202c;
+  --slate: #5c6b7a;
+  --line: #e2e6ea;
+  --surface: #ffffff;
+  --tint: #f6f8fa;
+  --brand: #2f6f4f;
+  --brand-dark: #234f39;
+  --error-red: #c92a2a;
+
+  /* Section design tokens */
+  --primary-blue: #1E3A8A;
+  --secondary-green: #10B981;
+  --deep-navy: #0F172A;
+  --text-primary: #0F172A;
+  --text-secondary: #64748B;
+  --border-light: #E2E8F0;
+  --surface-alt: #F8FAFC;
+
+  /* Theme defaults (overridden by ThemeContext) */
+  --bg: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --border: #E2E8F0;
+  --text: #0F172A;
+  --text-secondary: #64748B;
+  --hover-bg: #F1F5F9;
+  --input-bg: #F8FAFC;
+  --subtle-border: #F1F5F9;
+  --skeleton: #E2E8F0;
+  --shadow-color: rgba(15, 23, 42, 0.06);
+  --primary: #1E3A5F;
+  --primary-hover: #16304D;
+  --secondary: #3B82F6;
+  --primary-gradient: linear-gradient(135deg, #1E3A5F, #2563EB);
+  --sidebar-gradient: linear-gradient(180deg, #0F172A 0%, #1E3A5F 100%);
+  --button-gradient: linear-gradient(135deg, #1E3A5F, #3B82F6);
+  --accent-light: #DBEAFE;
+  --accent-bg: rgba(59, 130, 246, 0.08);
+  --active-bg: rgba(59, 130, 246, 0.08);
+  --active-text: #1E3A5F;
+  --danger-bg: #FEF2F2;
+  --danger-border: #FECACA;
+  --success-bg: #ECFDF5;
+  --warning-bg: #FEF3C7;
+  --info-bg: #EFF6FF;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  pointer-events: none;
+  background-image: url("/images/pattern.png");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% auto;
+  opacity: 0.9;
+}
+
+body.no-background-pattern::before {
+  display: none !important;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Layout Preferences ===== */
+
+/* Compact Layout */
+[data-compact="true"] .dashboard-content {
+  padding: 16px 20px 32px;
+}
+[data-compact="true"] .summary-cards {
+  gap: 12px;
+}
+[data-compact="true"] .settings-section-card {
+  padding: 18px;
+}
+[data-compact="true"] .sidebar-item {
+  padding: 7px 12px;
+}
+
+/* Large Text */
+[data-large-text="true"] body {
+  font-size: 17px;
+}
+[data-large-text="true"] h1 {
+  font-size: 34px;
+}
+[data-large-text="true"] .sidebar-item {
+  font-size: 16px;
+}
+[data-large-text="true"] .summary-value {
+  font-size: 32px;
+}
+[data-large-text="true"] .toggle-label,
+[data-large-text="true"] .settings-nav-item {
+  font-size: 16px;
+}
+
+/* Reduced Motion */
+[data-reduced-motion="true"] * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* High Contrast */
+[data-high-contrast="true"] {
+  --border: #94A3B8;
+  --subtle-border: #94A3B8;
+}
+[data-high-contrast="true"] .sidebar-item,
+[data-high-contrast="true"] .toggle-label,
+[data-high-contrast="true"] .settings-nav-item {
+  font-weight: 700;
+}
+
+/* ===== Mobile Sidebar Overlay ===== */
+.sidebar-backdrop {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .sidebar-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Form elements theme support */
+select, input[type="text"], input[type="email"], input[type="password"], textarea {
+  background: var(--card-bg);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+select:focus, input:focus, textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+}

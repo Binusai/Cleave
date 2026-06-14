@@ -1,0 +1,33 @@
+.settlement-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px 24px; background: var(--card-bg); border-radius: 16px;
+  border: 1px solid var(--border); min-height: 92px; transition: box-shadow 0.2s, background 0.3s ease; gap: 16px;
+}
+.settlement-row:hover { box-shadow: 0 2px 12px var(--shadow-color); }
+.settlement-row-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.settlement-avatar { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 17px; flex-shrink: 0; }
+.settlement-avatar.owed_to_you { background: var(--success-bg); color: #16A34A; }
+.settlement-avatar.you_owe { background: var(--danger-bg); color: #DC2626; }
+.settlement-row-info { min-width: 0; }
+.settlement-row-name { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.settlement-row-name span:first-child { font-size: 15px; font-weight: 600; color: var(--text); }
+.status-pill { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+.status-pill.green { background: var(--success-bg); color: #16A34A; }
+.status-pill.red { background: var(--danger-bg); color: #DC2626; }
+.settlement-row-group { font-size: 13px; color: var(--text-secondary); }
+.settlement-row-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+.settlement-row-amount { text-align: right; }
+.amount-value { display: block; font-size: 18px; font-weight: 700; }
+.amount-value.green { color: #16A34A; }
+.amount-value.red { color: #DC2626; }
+.amount-date { font-size: 12px; color: var(--text-secondary); }
+.settlement-row-actions { display: flex; gap: 8px; }
+.btn-outline { display: flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 10px; border: 1.5px solid var(--border); background: var(--card-bg); color: var(--text-secondary); font-weight: 600; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.btn-outline:hover { border-color: var(--text-secondary); background: var(--hover-bg); }
+.btn-filled { padding: 9px 20px; border-radius: 10px; border: none; background: var(--button-gradient); color: #FFF; font-weight: 600; font-size: 13px; cursor: pointer; font-family: 'Inter', sans-serif; transition: opacity 0.15s; }
+.btn-filled:hover { opacity: 0.9; }
+@media screen and (max-width: 700px) {
+  .settlement-row { flex-direction: column; align-items: flex-start; }
+  .settlement-row-right { width: 100%; justify-content: space-between; }
+  .settlement-row-actions { flex-direction: row; }
+}

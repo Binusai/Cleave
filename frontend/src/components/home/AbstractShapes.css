@@ -1,0 +1,87 @@
+.abstract-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.abstract-shape {
+  position: absolute;
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.shape-ribbon-1 {
+  top: 8%;
+  right: -5%;
+  width: 45%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(47, 111, 79, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+.shape-ribbon-2 {
+  bottom: 10%;
+  left: -8%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(ellipse at center, rgba(22, 32, 44, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: rotate(20deg);
+}
+
+.shape-circle-1 {
+  top: 20%;
+  left: 15%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(47, 111, 79, 0.08);
+}
+
+.shape-circle-2 {
+  bottom: 25%;
+  right: 20%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(22, 32, 44, 0.06);
+}
+
+.shape-line-1 {
+  top: 40%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(22, 32, 44, 0.04), transparent);
+}
+
+.shape-line-2 {
+  top: 55%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(47, 111, 79, 0.03), transparent);
+}
+
+.shape-dot-grid {
+  top: 15%;
+  right: 10%;
+  width: 200px;
+  height: 200px;
+  background-image: radial-gradient(rgba(22, 32, 44, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6;
+}
+
+.shape-balance {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: conic-gradient(from 180deg, rgba(47, 111, 79, 0.03) 0deg, rgba(22, 32, 44, 0.03) 180deg, rgba(47, 111, 79, 0.03) 360deg);
+  border-radius: 50%;
+  opacity: 0.5;
+}

@@ -1,0 +1,36 @@
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 20px 8px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  margin-bottom: 32px;
+  box-shadow: 0 1px 2px rgba(22, 32, 44, 0.04);
+}
+
+.trust-badge-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.trust-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  background: linear-gradient(135deg, var(--ink), var(--brand));
+  margin-left: -8px;
+}
+
+.trust-avatar:first-child {
+  margin-left: 0;
+}
+
+.trust-badge-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: -0.01em;
+}

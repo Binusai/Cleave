@@ -1,0 +1,444 @@
+.settlements-page {
+  --success: #16A34A;
+  --danger: #DC2626;
+  --warning: #F59E0B;
+}
+
+.settlements-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.settlements-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.settlements-subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.btn-settle-up {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  height: 48px;
+  border-radius: 12px;
+  border: none;
+  background: var(--button-gradient);
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-settle-up:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.settlements-summary-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  padding: 22px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-height: 130px;
+  transition: box-shadow 0.2s, transform 0.2s, background 0.3s ease;
+}
+
+.summary-card:hover {
+  box-shadow: 0 4px 16px var(--shadow-color);
+  transform: translateY(-2px);
+}
+
+.summary-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.summary-card-icon.danger { background: var(--danger-bg); color: var(--danger); }
+.summary-card-icon.success { background: var(--success-bg); color: var(--success); }
+.summary-card-icon.balance { background: var(--accent-bg); color: var(--primary); }
+
+.summary-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-card-content.center {
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.summary-card-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+.summary-card-value {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.summary-card-value.danger { color: var(--danger); }
+.summary-card-value.success { color: var(--success); }
+
+.summary-card-sub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.settlements-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+
+.settlements-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settlements-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settlements-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--hover-bg);
+  border-radius: 12px;
+  padding: 4px;
+  width: fit-content;
+}
+
+.settlements-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 9px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 13.5px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+}
+
+.settlements-tab.active {
+  background: var(--card-bg);
+  color: var(--text);
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.tab-count {
+  background: var(--danger-bg);
+  color: var(--danger);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.section-subheader {
+  margin-bottom: 16px;
+}
+
+.section-subheader h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+
+.section-subheader span {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.settlements-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settlements-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--card-bg);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+}
+
+.settlements-empty i {
+  font-size: 48px;
+  color: var(--success);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.settlements-empty h3 {
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.settlements-empty p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.btn-view-groups {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.sidebar-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  padding: 22px 20px;
+  transition: background 0.3s ease;
+}
+
+.sidebar-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 16px;
+}
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.progress-group-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.progress-percent {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.progress-percent.done {
+  color: var(--success);
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--hover-bg);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.progress-bar-fill.done {
+  background: var(--success);
+}
+
+.badges-card {
+  padding-bottom: 16px;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-radius: 12px;
+  background: var(--hover-bg);
+  border: 1px solid var(--subtle-border);
+  text-align: center;
+}
+
+.badge-item i {
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.badge-item span {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.ai-card {
+  background: var(--info-bg);
+  border-color: var(--border);
+}
+
+.ai-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.ai-card-header i {
+  font-size: 20px;
+  color: #F59E0B;
+}
+
+.ai-card-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.btn-ai-suggestion {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+}
+
+.btn-ai-suggestion:hover {
+  background: var(--primary);
+  color: #FFF;
+}
+
+@media screen and (max-width: 1200px) {
+  .settlements-layout {
+    grid-template-columns: 1fr;
+  }
+  .settlements-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .settlements-summary-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .settlements-title {
+    font-size: 24px;
+  }
+  .settlements-subtitle {
+    font-size: 13px;
+  }
+  .settlements-tabs {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .settlements-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 12.5px;
+  }
+  .settlements-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-settle-up {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .settlements-summary-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .summary-card {
+    min-height: auto;
+    padding: 16px;
+  }
+  .settlements-sidebar {
+    grid-template-columns: 1fr;
+  }
+}

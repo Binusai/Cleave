@@ -10,18 +10,17 @@ export default function SettingsPage() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { theme, mode, setTheme, setMode, compactLayout, setCompactLayout, largeText, setLargeText, reducedMotion, setReducedMotion, highContrast, setHighContrast } = useTheme()
   const [prefs, setPrefs] = useState<any>({})
-  const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState('appearance')
 
   useEffect(() => { loadPrefs() }, [])
 
-  const loadPrefs = async () => {
+const loadPrefs = async () => {
     try {
       const data = await fetchPreferences()
       setPrefs(data)
       if (data.theme) setTheme(data.theme)
       if (data.mode) setMode(data.mode)
-    } catch {} finally { setLoading(false) }
+    } catch {}
   }
 
   const handleToggle = async (key: string, value: any) => {

@@ -39,7 +39,6 @@ export default function InviteModal({ groupId, onClose, onInvite }: Props) {
   }
 
   const generateLink = () => {
-    const code = Math.random().toString(36).substring(2, 10).toUpperCase()
     const link = `${window.location.origin}/groups/${groupId}`
     setInviteLink(link)
   }

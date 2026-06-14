@@ -8,7 +8,7 @@ interface Props {
   net: number
 }
 
-export default function SmartSuggestion({ payer, payee, payerOwes, payeeOwes, net }: Props) {
+export default function SmartSuggestion({ payer, payerOwes, payeeOwes, net }: Props) {
   const formatCurrency = (val: number) =>
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(val)
 

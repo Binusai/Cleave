@@ -15,14 +15,14 @@ interface Category {
 }
 
 interface Props {
-  groupId: number
+  groupId?: number
   members: Member[]
   categories: Category[]
   onClose: () => void
   onAdd: (data: any) => Promise<void>
 }
 
-export default function AddExpenseModal({ groupId, members, categories, onClose, onAdd }: Props) {
+export default function AddExpenseModal({ members, categories, onClose, onAdd }: Props) {
   const [title, setTitle] = useState('')
   const [amount, setAmount] = useState('')
   const [paidBy, setPaidBy] = useState<number>(members[0]?.user || 0)

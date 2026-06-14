@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -91,14 +92,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'cleave.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cleave',
-        'USER': 'postgres',
-        'PASSWORD': 'Binusai@1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://neondb_owner:npg_mWSOrwXe5Ub2@ep-tiny-sunset-aonwei4q.c-2.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
+        conn_max_age=600,
+    )
 }
 
 AUTH_USER_MODEL = 'authentication.User'

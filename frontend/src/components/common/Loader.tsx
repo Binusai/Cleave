@@ -1,6 +1,11 @@
+import { useLoading } from '../../context/LoadingContext'
 import './Loader.css'
 
 export default function Loader() {
+  const { isLoading } = useLoading()
+
+  if (!isLoading) return null
+
   return (
     <div className="cleave-loader-overlay">
       <div className="cleave-loader">

@@ -1,6 +1,32 @@
 /* =============================================
    TOPBAR — theme-aware via App.css variables
    ============================================= */
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-menu-btn {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 22px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .topbar-menu-btn {
+    display: flex;
+  }
+}
 
 .topbar {
   display: flex;

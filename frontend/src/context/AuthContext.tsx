@@ -24,13 +24,35 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | null>(null)
 
+const INACTIVITY_TIMEOUT = 5 * 60 * 1000
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [inactivityTimer, setInactivityTimer] = useState<ReturnType<typeof setTimeout> | null>(null)
+
+  const resetInactivityTimer = useCallback(() => {
+    if (inactivityTimer) clearTimeout(inactivityTimer)
+    if (user) {
+      const timer = setTimeout(() => {
+        logout()
+      }, INACTIVITY_TIMEOUT)
+      setInactivityTimer(timer)
+    }
+  }, [user])
+
+  useEffect(() => {
+    const events = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click']
+    events.forEach((event) => document.addEventListener(event, resetInactivityTimer))
+    return () => {
+      events.forEach((event) => document.removeEventListener(event, resetInactivityTimer))
+      if (inactivityTimer) clearTimeout(inactivityTimer)
+    }
+  }, [resetInactivityTimer])
 
   const initAuth = useCallback(async () => {
-    const accessToken = localStorage.getItem('access_token')
+    const accessToken = sessionStorage.getItem('access_token')
     if (!accessToken) {
       setLoading(false)
       return
@@ -51,6 +73,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     initAuth()
   }, [initAuth])
 
+  useEffect(() => {
+    if (user) resetInactivityTimer()
+  }, [user, resetInactivityTimer])
+
   const login = async (payload: { login_identifier: string; password: string }) => {
     setError(null)
     try {
@@ -58,11 +84,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       sessionStorage.setItem('access_token', data.tokens.access)
       sessionStorage.setItem('refresh_token', data.tokens.refresh)
       setUser(data.user)
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error && 'response' in err
-          ? (err as { response: { data: { error: string } } }).response.data.error
-          : 'Login failed'
+    } catch (err: any) {
+      const message = err?.response?.data?.error || 'Login failed'
       setError(message)
       throw err
     }
@@ -73,15 +96,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       await registerUser(payload)
       return true
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error && 'response' in err
-          ? (err as { response: { data: { errors: Record<string, string> } } }).response.data.errors
-          : 'Registration failed'
-      if (typeof message === 'object') {
-        setError(Object.values(message)[0] as string)
+    } catch (err: any) {
+      const errors = err?.response?.data?.errors
+      if (errors && typeof errors === 'object') {
+        setError(Object.values(errors)[0] as string)
       } else {
-        setError(message as string)
+        setError(err?.response?.data?.error || 'Registration failed')
       }
       return false
     }
@@ -94,12 +114,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       sessionStorage.setItem('access_token', data.tokens.access)
       sessionStorage.setItem('refresh_token', data.tokens.refresh)
       setUser(data.user)
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error && 'response' in err
-          ? (err as { response: { data: { error: string } } }).response.data.error
-          : 'Google authentication failed'
-      setError(message)
+    } catch (err: any) {
+      setError(err?.response?.data?.error || 'Google authentication failed')
       throw err
     }
   }
@@ -107,15 +123,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     sessionStorage.removeItem('access_token')
     sessionStorage.removeItem('refresh_token')
+    if (inactivityTimer) clearTimeout(inactivityTimer)
     setUser(null)
+    window.location.href = '/'
   }
 
   const clearError = () => setError(null)
 
   return (
-    <AuthContext.Provider
-      value={{ user, loading, error, login, register, googleLogin, logout, clearError }}
-    >
+    <AuthContext.Provider value={{ user, loading, error, login, register, googleLogin, logout, clearError }}>
       {children}
     </AuthContext.Provider>
   )

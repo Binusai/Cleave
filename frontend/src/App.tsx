@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import AuthPage from './pages/AuthPage'
 import HomePage from './pages/HomePage'
@@ -16,7 +17,10 @@ import SettingsPage from './pages/SettingsPage'
 import AIInsightsPage from './pages/AIInsightsPage'
 import AIChatPage from './pages/AIChatPage'
 import AIChatFloating from './components/ai/AIChatFloating'
+import Loader from './components/common/Loader'
 import { useAuth } from './hooks/useAuth'
+import { useLoading } from './context/LoadingContext'
+import { setLoadingCallback } from './api/client'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth()
@@ -27,10 +31,19 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 function App() {
   const { user, loading } = useAuth()
+  const { setLoading } = useLoading()
+
+  useEffect(() => {
+    setLoadingCallback((val: boolean) => {
+      setLoading(val)
+    })
+  }, [setLoading])
+
   if (loading) return <div className="loading-screen"><div className="loading-spinner" /></div>
 
   return (
     <>
+      <Loader />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/auth" element={user ? <Navigate to="/dashboard" replace /> : <AuthPage />} />

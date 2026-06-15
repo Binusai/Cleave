@@ -120,21 +120,21 @@ export default function Topbar({ onMenuClick }: TopbarProps) {
 
           {showQuickAddDropdown && (
             <div className="topbar-dropdown quickadd-dropdown">
-              <button className="quickadd-item" onClick={() => handleQuickAddOption('/groups/new')}>
+              <button className="quickadd-item" onClick={() => handleQuickAddOption('/groups')}>
                 <span className="quickadd-item-icon" style={{ background: 'var(--accent-light)' }}>
                   <i className="bx bx-group" style={{ color: 'var(--primary)' }}></i>
                 </span>
                 <span className="quickadd-item-label">Add Group</span>
                 <i className="bx bx-chevron-right quickadd-arrow"></i>
               </button>
-              <button className="quickadd-item" onClick={() => handleQuickAddOption('/people/new')}>
+              <button className="quickadd-item" onClick={() => handleQuickAddOption('/people')}>
                 <span className="quickadd-item-icon" style={{ background: 'var(--success-bg)' }}>
                   <i className="bx bx-user-plus" style={{ color: '#15803D' }}></i>
                 </span>
                 <span className="quickadd-item-label">Add Person</span>
                 <i className="bx bx-chevron-right quickadd-arrow"></i>
               </button>
-              <button className="quickadd-item" onClick={() => handleQuickAddOption('/expenses/new')}>
+              <button className="quickadd-item" onClick={() => handleQuickAddOption('/expenses')}>
                 <span className="quickadd-item-icon" style={{ background: 'var(--warning-bg)' }}>
                   <i className="bx bx-receipt" style={{ color: '#A16207' }}></i>
                 </span>

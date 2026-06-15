@@ -2,38 +2,18 @@ import './Sections.css'
 
 /* ============ SECTION 1: WHY CLEAVE ============ */
 
-const whyCards = [
-  { icon: 'bx-bar-chart-alt-2', title: 'Transparent Balances', desc: 'Know exactly who owes whom at any moment.' },
-  { icon: 'bx-git-merge', title: 'Smart Settlements', desc: 'Reduce unnecessary transactions with intelligent settlement suggestions.' },
-  { icon: 'bx-group', title: 'Shared Groups', desc: 'Manage expenses across trips, homes, projects, and events.' },
-  { icon: 'bx-history', title: 'Complete History', desc: 'Every transaction is recorded and searchable.' },
-]
+import handImage from "../../assets/hand.png";
 
 export function WhyCleave() {
   return (
     <section className="why-cleave">
-      <div className="reveal">
-        <span className="section-label"><i className="bx bx-bulb" />Why Cleave</span>
-        <h2 className="section-headline">
-          Shared finances should bring people together, not create confusion.
-        </h2>
-        <p className="section-sub">
-          From trips and roommates to families and teams, money should be transparent,
-          fair, and easy to manage. Cleave helps everyone stay aligned with real-time
-          visibility, intelligent tracking, and effortless settlements.
-        </p>
-      </div>
-      <div className="why-cards">
-        {whyCards.map((c, i) => (
-          <div key={i} className="why-card reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
-            <div className="why-card-icon"><i className={`bx ${c.icon}`} /></div>
-            <h3>{c.title}</h3>
-            <p>{c.desc}</p>
-          </div>
-        ))}
-      </div>
+      <img
+        src={handImage}
+        alt="Why Cleave"
+        className="why-cleave-image"
+      />
     </section>
-  )
+  );
 }
 
 /* ============ SECTION 2: FEATURE SHOWCASE ============ */

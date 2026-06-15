@@ -8,6 +8,7 @@ import './AIInsightsPage.css'
 export default function AIInsightsPage() {
   const location = useLocation()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [data, setData] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
@@ -42,9 +43,14 @@ export default function AIInsightsPage() {
 
   return (
     <div className="dashboard">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} />
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar />
+        <Topbar onMenuClick={() => setMobileOpen(true)} />
         <div className="dashboard-content ai-insights-page">
 
           <div className="ai-sub-nav">

@@ -8,13 +8,13 @@ import './SettingsPage.css'
 export default function SettingsPage() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { theme, mode, setTheme, setMode, compactLayout, setCompactLayout, largeText, setLargeText, reducedMotion, setReducedMotion, highContrast, setHighContrast } = useTheme()
+  const { theme, mode, setTheme, setMode } = useTheme()
   const [prefs, setPrefs] = useState<any>({})
   const [activeSection, setActiveSection] = useState('appearance')
 
   useEffect(() => { loadPrefs() }, [])
 
-const loadPrefs = async () => {
+  const loadPrefs = async () => {
     try {
       const data = await fetchPreferences()
       setPrefs(data)
@@ -39,14 +39,6 @@ const loadPrefs = async () => {
     try { await updatePreferences({ mode: m }) } catch {}
   }
 
-  const handleLayoutToggle = (key: string, value: boolean) => {
-    if (key === 'compact_layout') setCompactLayout(value)
-    if (key === 'large_text') setLargeText(value)
-    if (key === 'reduced_motion') setReducedMotion(value)
-    if (key === 'high_contrast') setHighContrast(value)
-    handleToggle(key, value)
-  }
-
   const sections = [
     { key: 'appearance', label: 'Appearance', icon: 'bx-palette' },
     { key: 'notifications', label: 'Notifications', icon: 'bx-bell' },
@@ -57,9 +49,14 @@ const loadPrefs = async () => {
 
   return (
     <div className="dashboard">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar/>
+        <Topbar onMenuClick={() => setMobileOpen(true)} />
         <div className="dashboard-content settings-page">
           <div className="settings-header">
             <div>
@@ -86,7 +83,7 @@ const loadPrefs = async () => {
                   <div className="theme-grid">
                     {themes.map((t) => (
                       <button key={t.name} className={`theme-card ${theme.name === t.name ? 'selected' : ''}`} onClick={() => handleThemeChange(t.name)} style={{ borderColor: theme.name === t.name ? t.primary : undefined }}>
-                        <div className="theme-preview" style={{ background: t.gradient }}>
+                        <div className="theme-preview" style={{ background: t.primary }}>
                           <div className="theme-preview-sidebar" style={{ background: t.primaryHover }} />
                           <div className="theme-preview-main">
                             <div className="theme-preview-bar" style={{ background: t.secondary }} />
@@ -94,7 +91,7 @@ const loadPrefs = async () => {
                             <div className="theme-preview-card short" />
                           </div>
                         </div>
-                        <span className="theme-name">{t.label}</span>
+                        <span className="theme-name">{t.name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</span>
                       </button>
                     ))}
                   </div>
@@ -111,10 +108,10 @@ const loadPrefs = async () => {
 
                   <h3 style={{ marginTop: 32 }}>Layout</h3>
                   <div className="toggle-list">
-                    <ToggleRow label="Compact Layout" checked={compactLayout} onChange={(v) => handleLayoutToggle('compact_layout', v)} />
-                    <ToggleRow label="Large Text" checked={largeText} onChange={(v) => handleLayoutToggle('large_text', v)} />
-                    <ToggleRow label="Reduced Motion" checked={reducedMotion} onChange={(v) => handleLayoutToggle('reduced_motion', v)} />
-                    <ToggleRow label="High Contrast" checked={highContrast} onChange={(v) => handleLayoutToggle('high_contrast', v)} />
+                    <ToggleRow label="Compact Layout" checked={prefs.compact_layout} onChange={(v) => handleToggle('compact_layout', v)} />
+                    <ToggleRow label="Large Text" checked={prefs.large_text} onChange={(v) => handleToggle('large_text', v)} />
+                    <ToggleRow label="Reduced Motion" checked={prefs.reduced_motion} onChange={(v) => handleToggle('reduced_motion', v)} />
+                    <ToggleRow label="High Contrast" checked={prefs.high_contrast} onChange={(v) => handleToggle('high_contrast', v)} />
                   </div>
                 </div>
               )}

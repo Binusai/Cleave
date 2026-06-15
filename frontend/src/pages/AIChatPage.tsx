@@ -13,6 +13,7 @@ interface Message {
 export default function AIChatPage() {
   const location = useLocation()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     { role: 'ai', text: "Hi! I'm Cleave AI, your personal financial assistant. Ask me about your expenses, settlements, groups, or spending patterns." }
   ])
@@ -63,9 +64,14 @@ export default function AIChatPage() {
 
   return (
     <div className="dashboard">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} />
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar />
+        <Topbar onMenuClick={() => setMobileOpen(true)} />
         <div className="dashboard-content ai-chat-page">
 
           <div className="ai-sub-nav">

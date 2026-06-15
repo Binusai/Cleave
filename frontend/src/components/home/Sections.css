@@ -33,7 +33,7 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: var(--text-primary);
+  color: white;
   margin: 0;
   max-width: 760px;
 }
@@ -50,75 +50,24 @@
 /* ===== Section 1: Why Cleave ===== */
 
 .why-cleave {
-  padding: 120px 48px;
-  text-align: center;
-  background: #fff;
+  width: 100%;
+  height: 100vh;
+  background: rgba(3, 0, 20, 1);
+  overflow: hidden;
 }
 
-.why-cleave .section-headline,
-.why-cleave .section-sub {
-  margin-inline: auto;
-}
-
-.why-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  margin-top: 72px;
-  max-width: 1100px;
-  margin-inline: auto;
-}
-
-.why-card {
-  background: var(--surface-alt);
-  border: 1px solid var(--border-light);
-  border-radius: 16px;
-  padding: 44px 32px 40px;
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.why-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(30, 58, 138, 0.07);
-}
-
-.why-card-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #EEF2FF, #DBEAFE);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.why-card-icon i {
-  font-size: 24px;
-  color: var(--primary-blue);
-}
-
-.why-card h3 {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 10px;
-  letter-spacing: -0.01em;
-}
-
-.why-card p {
-  font-size: 14.5px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
+.why-cleave-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===== Section 2: Feature Showcase ===== */
 
 .feature-showcase {
   padding: 120px 48px;
-  background: var(--surface-alt);
+  background: rgba(3, 0, 20, 1);
   text-align: center;
 }
 
@@ -184,7 +133,7 @@
 
 .global-finance {
   padding: 120px 48px;
-  background: #fff;
+  background: rgba(3, 0, 20, 1);
   text-align: center;
 }
 
@@ -260,7 +209,7 @@
 
 .ai-section {
   padding: 120px 48px;
-  background: linear-gradient(180deg, #F0F7FF 0%, #F8FAFC 100%);
+  background: rgba(3, 0, 20, 1);
   text-align: center;
 }
 
@@ -326,7 +275,7 @@
 
 .trust-section {
   padding: 120px 48px;
-  background: #fff;
+  background: rgba(3, 0, 20, 1);
   text-align: center;
 }
 
@@ -392,7 +341,7 @@
 
 .social-proof {
   padding: 120px 48px;
-  background: var(--surface-alt);
+  background: rgba(3, 0, 20, 1);
   text-align: center;
 }
 

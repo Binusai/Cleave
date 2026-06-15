@@ -2,10 +2,14 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { fetchUnreadCount, fetchNotifications } from '../../api/notifications'
 import { fetchProfile } from '../../api/profile'
-import './Topbar.css'
 import { fetchSummary } from '../../api/dashboard'
+import './Topbar.css'
 
-export default function Topbar() {
+interface TopbarProps {
+  onMenuClick?: () => void
+}
+
+export default function Topbar({ onMenuClick }: TopbarProps) {
   const navigate = useNavigate()
   const [showNotifDropdown, setShowNotifDropdown] = useState(false)
   const [showProfileDropdown, setShowProfileDropdown] = useState(false)
@@ -97,13 +101,16 @@ export default function Topbar() {
 
   return (
     <header className="topbar">
-      {/* Logo — left side, clicks to dashboard */}
-      <div className="topbar-logo" onClick={() => navigate('/dashboard')}>
-        <img src="/images/logo.png" alt="Cleave" />
+      <div className="topbar-left">
+        <button className="topbar-menu-btn mobile-only" onClick={onMenuClick}>
+          <i className="bx bx-menu"></i>
+        </button>
+        <div className="topbar-logo" onClick={() => navigate('/dashboard')}>
+          <img src="/images/logo.png" alt="Cleave" />
+        </div>
       </div>
 
       <div className="topbar-actions">
-        {/* Quick Add */}
         <div className="topbar-quickadd-wrapper" ref={quickAddRef}>
           <button className="topbar-btn quick-add" onClick={handleQuickAddClick}>
             <i className="bx bx-plus"></i>
@@ -138,7 +145,6 @@ export default function Topbar() {
           )}
         </div>
 
-        {/* Notifications */}
         <div className="topbar-notif-wrapper" ref={notifRef}>
           <button className="topbar-icon-btn" onClick={handleNotifClick}>
             <i className="bx bx-bell"></i>
@@ -183,7 +189,6 @@ export default function Topbar() {
           )}
         </div>
 
-        {/* Balance */}
         <div className="topbar-balance">
           <span className="balance-label">Balance</span>
           <span className={`balance-amount ${(balance.net_balance || 0) >= 0 ? 'positive' : 'negative'}`}>
@@ -191,7 +196,6 @@ export default function Topbar() {
           </span>
         </div>
 
-        {/* Profile */}
         <div className="topbar-profile-wrapper" ref={profileRef}>
           <button className="topbar-profile" onClick={handleProfileClick}>
             <div className="profile-avatar">

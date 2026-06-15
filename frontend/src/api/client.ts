@@ -16,8 +16,10 @@ export function setLoadingCallback(cb: (val: boolean) => void) {
 }
 
 apiClient.interceptors.request.use((config) => {
-  activeRequests++
-  if (loadingCallback) loadingCallback(true)
+  if (!config.headers?.['X-Skip-Loader']) {
+    activeRequests++
+    if (loadingCallback) loadingCallback(true)
+  }
 
   const accessToken = sessionStorage.getItem('access_token')
   if (accessToken && config.headers) {
@@ -28,18 +30,22 @@ apiClient.interceptors.request.use((config) => {
 
 apiClient.interceptors.response.use(
   (response) => {
-    activeRequests--
-    if (activeRequests <= 0 && loadingCallback) {
-      activeRequests = 0
-      loadingCallback(false)
+    if (!response.config.headers?.['X-Skip-Loader']) {
+      activeRequests--
+      if (activeRequests <= 0 && loadingCallback) {
+        activeRequests = 0
+        loadingCallback(false)
+      }
     }
     return response
   },
   async (error) => {
-    activeRequests--
-    if (activeRequests <= 0 && loadingCallback) {
-      activeRequests = 0
-      loadingCallback(false)
+    if (!error.config?.headers?.['X-Skip-Loader']) {
+      activeRequests--
+      if (activeRequests <= 0 && loadingCallback) {
+        activeRequests = 0
+        loadingCallback(false)
+      }
     }
 
     const originalRequest = error.config

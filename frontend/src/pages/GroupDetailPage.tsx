@@ -61,9 +61,14 @@ export default function GroupDetailPage() {
 
   return (
     <div className="dashboard">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed(!sidebarCollapsed)} mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        mobileOpen={mobileOpen}
+        onMobileClose={() => setMobileOpen(false)}
+      />
       <div className={`dashboard-main ${sidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
-        <Topbar/>
+        <Topbar onMenuClick={() => setMobileOpen(true)} />
         <div className="dashboard-content">
           <div className="detail-header">
             <button className="back-btn" onClick={() => navigate('/groups')}>
@@ -180,8 +185,6 @@ export default function GroupDetailPage() {
           }}
         />
       )}
-
-
     </div>
   )
 }

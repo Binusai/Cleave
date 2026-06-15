@@ -11,7 +11,9 @@ export const fetchRecommendations = async () => {
 }
 
 export const sendChatMessage = async (message: string) => {
-  const response = await apiClient.post('/ai/chat/', { message })
+  const response = await apiClient.post('/ai/chat/', { message }, {
+    headers: { 'X-Skip-Loader': 'true' }
+  })
   return response.data
 }
 

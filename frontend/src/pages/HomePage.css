@@ -6,7 +6,7 @@
 .home-container {
   width: 92vw;
   margin-top: 120px;
-  background: var(--surface);
+  background: rgba(3, 0, 20, 1);
   border-radius: 40px;
   border: 1px solid var(--line);
   box-shadow: 0 8px 30px rgba(22, 32, 44, 0.06);
